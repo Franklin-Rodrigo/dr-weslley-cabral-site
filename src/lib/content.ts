@@ -20,6 +20,7 @@ export type Unit = {
   whatsapp: string; // só dígitos, com DDI
   phoneLabel: string;
   address: string;
+  hours: { days: string; time: string }[];
 };
 
 export const UNITS: Unit[] = [
@@ -29,7 +30,8 @@ export const UNITS: Unit[] = [
     city: "Juazeiro do Norte, CE",
     whatsapp: WHATSAPP,
     phoneLabel: WHATSAPP_LABEL,
-    address: "Av. Leão Sampaio, 3200 - Lagoa Seca, Juazeiro do Norte - CE, 63040-000",
+    address: "Av. Leão Sampaio, 3200 - Lagoa Seca, Juazeiro do Norte - CE",
+    hours: [{ days: "Segunda a sexta", time: "9h às 12h e 14h às 18h" }],
   },
   {
     id: "lavras",
@@ -37,7 +39,8 @@ export const UNITS: Unit[] = [
     city: "Lavras da Mangabeira, CE",
     whatsapp: WHATSAPP,
     phoneLabel: WHATSAPP_LABEL,
-    address: "Instituto Dr. Weslley · endereço e horários a confirmar",
+    address: "Rua Ferroviária, 15B, Lavras da Mangabeira - CE",
+    hours: [{ days: "Quinta a sábado", time: "8h às 12h e 14h às 18h" }],
   },
 ];
 

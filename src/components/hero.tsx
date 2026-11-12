@@ -1,5 +1,7 @@
 import { BOOKING_HREF, BOOKING_LABEL, HERO } from "@/lib/content";
-import { ButtonLink, Container, Eyebrow, PhotoPlaceholder } from "./ui";
+import Image from "next/image";
+import heroImg from "@/assets/hero-monograma.webp";
+import { ButtonLink, Container, Eyebrow } from "./ui";
 
 export function Hero() {
   return (
@@ -19,11 +21,21 @@ export function Hero() {
           </div>
         </div>
       </Container>
-      <PhotoPlaceholder
-        label="Foto do Dr. Weslley"
-        badge="Instituto Dr. Weslley"
-        className="h-[420px] w-full lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[48.6%]"
-      />
+      <figure className="relative m-0 h-[420px] w-full overflow-hidden bg-[#1c1c1c] lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[48.6%]">
+        <Image
+          src={heroImg}
+          alt="Monograma do Instituto Dr. Weslley Cabral"
+          fill
+          priority
+          placeholder="blur"
+          sizes="(min-width: 1024px) 49vw, 100vw"
+          className="object-cover"
+        />
+        <span className="absolute top-6 left-6 z-10 flex items-center gap-2.5 rounded-[2px] bg-background px-4 py-2.5 text-sm font-medium">
+          <i className="size-2.5 rounded-full bg-gold" />
+          Instituto Dr. Weslley
+        </span>
+      </figure>
     </section>
   );
 }

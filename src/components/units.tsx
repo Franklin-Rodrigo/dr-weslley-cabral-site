@@ -1,4 +1,4 @@
-import { MapPin, Star } from "lucide-react";
+import { Clock, MapPin, Star } from "lucide-react";
 import { UNITS } from "@/lib/content";
 import { ButtonLink, Container, Eyebrow, SectionTitle } from "./ui";
 import { Reveal } from "./reveal";
@@ -16,7 +16,7 @@ export function Units() {
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           {UNITS.map((u, i) => (
             <Reveal key={u.id} delay={i * 120}>
-              <article className="h-full rounded-[4px] border border-border bg-surface p-6 sm:p-10">
+              <article className="flex h-full flex-col rounded-[4px] border border-border bg-surface p-6 sm:p-10">
                 <h3 className="mb-3 font-serif text-[2rem] leading-tight font-medium">{u.city}</h3>
                 <p className="flex items-start gap-2 text-muted">
                   <MapPin size={18} className="mt-1 shrink-0 text-gold" aria-hidden />
@@ -33,8 +33,18 @@ export function Units() {
                     </a>
                   )}
                 </p>
-                <p className="mt-6 mb-6 text-lg font-semibold">WhatsApp {u.phoneLabel}</p>
-                <ButtonLink href={`https://wa.me/${u.whatsapp}?text=${greeting}`}>Chamar no WhatsApp</ButtonLink>
+                {u.hours.map((h) => (
+                  <p key={h.days} className="mt-3 flex items-start gap-2 text-muted">
+                    <Clock size={18} className="mt-1 shrink-0 text-gold" aria-hidden />
+                    <span>
+                      <strong className="font-semibold text-foreground">{h.days}</strong> · {h.time}
+                    </span>
+                  </p>
+                ))}
+                <div className="mt-auto pt-6">
+                  <p className="mb-6 text-lg font-semibold">WhatsApp {u.phoneLabel}</p>
+                  <ButtonLink href={`https://wa.me/${u.whatsapp}?text=${greeting}`}>Chamar no WhatsApp</ButtonLink>
+                </div>
               </article>
             </Reveal>
           ))}
