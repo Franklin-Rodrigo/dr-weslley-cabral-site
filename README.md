@@ -2,15 +2,33 @@
 
 Site do cirurgião-dentista Dr. Weslley Cabral (Juazeiro do Norte e Lavras da Mangabeira, CE). Modelo "Ouro e Preto", escolhido entre 10 propostas de design.
 
-HTML, CSS e JavaScript puros, sem build. Para ver localmente, abra o `index.html` ou sirva a pasta com qualquer servidor estático.
+Next.js (App Router), TypeScript e Tailwind CSS v4. Publicado na Vercel: cada push na `main` atualiza o site.
 
-## O que ainda precisa ser preenchido
+## Rodando localmente
 
-- Fotos reais (hero, retrato, casos de antes e depois): hoje são espaços reservados.
-- CRO real (aparece no "Sobre" e no rodapé como `CRO-CE 00000`).
-- Endereço e horário de cada unidade.
-- Endereço do site de agendamento: `BOOKING_URL` no topo do `script.js`. Vazio, os botões levam ao pré-cadastro.
+```bash
+npm install
+npm run dev
+```
+
+Abra [http://localhost:3000](http://localhost:3000).
+
+## Editando o conteúdo
+
+Todos os textos e dados ficam em `src/lib/content.ts`:
+
+- `WHATSAPP`: número que recebe o pré-cadastro e os botões das unidades.
+- `BOOKING_URL`: endereço do site de agendamento. Vazio, os botões "Agendar" levam ao pré-cadastro.
+- `UNITS`: cidade e endereço de cada unidade.
+- `CRO`, tratamentos, textos do "Sobre".
+
+## O que ainda falta
+
+- Fotos reais (abertura, retrato, casos de antes e depois): hoje são espaços reservados.
+- CRO real (`CRO-CE 00000`).
+- Endereço de Lavras da Mangabeira e horários das unidades.
+- Endereço do site de agendamento.
 
 ## Pré-cadastro
 
-O formulário monta a mensagem e abre o WhatsApp da unidade escolhida (`wa.me`), sem back-end. Os números ficam em `UNIDADES`, no `script.js`.
+O formulário monta a mensagem e abre o WhatsApp do consultório (`wa.me`) com o texto pronto, sem back-end.
