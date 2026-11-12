@@ -12,6 +12,7 @@ export const WHATSAPP_LABEL = "(88) 9222-8841";
 
 export const INSTAGRAM_URL = "https://www.instagram.com/dr.weslleycc/";
 export const CRO = "CRO-CE 9884";
+export const GOOGLE_REVIEW_URL = "https://g.page/r/CdnhwYVD8nnJEBM/review";
 
 export type Unit = {
   id: string;

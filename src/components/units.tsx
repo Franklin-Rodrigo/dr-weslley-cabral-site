@@ -1,5 +1,5 @@
 import { Clock, MapPin, Star } from "lucide-react";
-import { UNITS } from "@/lib/content";
+import { GOOGLE_REVIEW_URL, UNITS } from "@/lib/content";
 import { ButtonLink, Container, Eyebrow, SectionTitle } from "./ui";
 import { Reveal } from "./reveal";
 
@@ -49,8 +49,15 @@ export function Units() {
             </Reveal>
           ))}
         </div>
-        <p className="mt-10 flex items-center justify-center gap-2 text-center font-medium text-gold">
-          <Star size={16} fill="currentColor" aria-hidden /> Atendeu com você? Avalie o Dr. Weslley no Google
+        <p className="mt-10 text-center">
+          <a
+            href={GOOGLE_REVIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-medium text-gold underline decoration-gold/40 underline-offset-4 transition-colors hover:decoration-gold"
+          >
+            <Star size={16} fill="currentColor" aria-hidden /> Já foi atendido? Avalie o Dr. Weslley no Google
+          </a>
         </p>
       </Container>
     </section>
