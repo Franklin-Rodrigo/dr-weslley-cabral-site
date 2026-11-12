@@ -25,8 +25,6 @@ Todos os textos e dados ficam em `src/lib/content.ts`:
 ## O que ainda falta
 
 - Fotos reais (abertura, retrato, casos de antes e depois): hoje são espaços reservados.
-- CRO real (`CRO-CE 00000`).
-- Endereço de Lavras da Mangabeira e horários das unidades.
 - Endereço do site de agendamento.
 
 ## Pré-cadastro

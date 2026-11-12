@@ -1,4 +1,4 @@
-// Todo o conteúdo do site fica aqui. Itens marcados com "a confirmar" ou 00000 ainda precisam do dado real.
+// Todo o conteúdo do site fica aqui.
 
 /** Endereço do site de agendamento. Vazio: os botões "Agendar" levam ao pré-cadastro. */
 export const BOOKING_URL = "";
@@ -11,7 +11,7 @@ export const WHATSAPP = "558892228841";
 export const WHATSAPP_LABEL = "(88) 9222-8841";
 
 export const INSTAGRAM_URL = "https://www.instagram.com/dr.weslleycc/";
-export const CRO = "CRO-CE 00000";
+export const CRO = "CRO-CE 9884";
 
 export type Unit = {
   id: string;
