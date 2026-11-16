@@ -6,6 +6,7 @@ import { Results } from "@/components/results";
 import { About } from "@/components/about";
 import { PreRegister } from "@/components/pre-register";
 import { Units } from "@/components/units";
+import { Ambiente } from "@/components/ambiente";
 import { FinalCta } from "@/components/final-cta";
 import { Footer } from "@/components/footer";
 
@@ -21,6 +22,7 @@ export default function Home() {
         <About />
         <PreRegister />
         <Units />
+        <Ambiente />
         <FinalCta />
       </main>
       <Footer />

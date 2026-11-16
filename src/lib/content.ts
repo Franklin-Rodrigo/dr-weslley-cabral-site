@@ -51,6 +51,7 @@ export const NAV_LINKS = [
   { href: "#resultados", label: "Resultados" },
   { href: "#sobre", label: "Sobre" },
   { href: "#unidades", label: "Unidades" },
+  { href: "#ambiente", label: "Ambiente" },
 ];
 
 export const HERO = {
