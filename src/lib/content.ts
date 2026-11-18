@@ -21,6 +21,7 @@ export type Unit = {
   whatsapp: string; // só dígitos, com DDI
   phoneLabel: string;
   address: string;
+  reference?: string;
   hours: { days: string; time: string }[];
 };
 
@@ -32,6 +33,7 @@ export const UNITS: Unit[] = [
     whatsapp: WHATSAPP,
     phoneLabel: WHATSAPP_LABEL,
     address: "Av. Leão Sampaio, 3200 - Lagoa Seca, Juazeiro do Norte - CE",
+    reference: "No GMall",
     hours: [{ days: "Segunda a sexta", time: "9h às 12h e 14h às 18h" }],
   },
   {
@@ -40,7 +42,8 @@ export const UNITS: Unit[] = [
     city: "Lavras da Mangabeira, CE",
     whatsapp: WHATSAPP,
     phoneLabel: WHATSAPP_LABEL,
-    address: "Rua Ferroviária, 15B, Lavras da Mangabeira - CE",
+    address: "Rua da Ferroviária, 147B - Boa Vista, Lavras da Mangabeira - CE",
+    reference: "Ao lado da Clínica dos Caichos",
     hours: [{ days: "Quinta a sábado", time: "8h às 12h e 14h às 18h" }],
   },
 ];
