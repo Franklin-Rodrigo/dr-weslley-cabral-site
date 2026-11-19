@@ -1,6 +1,8 @@
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { ABOUT } from "@/lib/content";
-import { Container, Eyebrow, PhotoPlaceholder } from "./ui";
+import retrato from "@/assets/dr-weslley.webp";
+import { Container, Eyebrow } from "./ui";
 import { Reveal } from "./reveal";
 
 export function About() {
@@ -27,7 +29,16 @@ export function About() {
           </ul>
         </Reveal>
         <Reveal className="order-1 lg:order-2" delay={120}>
-          <PhotoPlaceholder label="Retrato do Dr. Weslley" className="h-[460px] rounded-[4px] lg:h-[620px]" />
+          <figure className="relative m-0 h-[460px] overflow-hidden rounded-[4px] bg-surface lg:h-[620px]">
+            <Image
+              src={retrato}
+              alt="Retrato do Dr. Weslley Cabral, de suéter azul-marinho e braços cruzados"
+              fill
+              placeholder="blur"
+              sizes="(min-width: 1024px) 520px, 100vw"
+              className="object-cover"
+            />
+          </figure>
         </Reveal>
       </Container>
     </section>
