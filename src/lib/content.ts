@@ -64,9 +64,10 @@ export const HERO = {
     "Planejamento, estética e cuidado em cada etapa. Atendimento com o Dr. Weslley Cabral em duas unidades no Ceará.",
 };
 
-export const STATS = [
-  { value: "10,4 mil", label: "pessoas acompanham no Instagram" },
-  { value: "2 unidades", label: "Juazeiro do Norte e Lavras da Mangabeira" },
+/** `count` faz o número contar até o valor; sem ele, o texto de `value` aparece com um ponto pulsando. */
+export const STATS: { value: string; label: string; count?: number; decimals?: number; suffix?: string; suffixOne?: string }[] = [
+  { value: "10,4 mil", count: 10.4, decimals: 1, suffix: " mil", label: "pessoas acompanham no Instagram" },
+  { value: "2 unidades", count: 2, suffix: " unidades", suffixOne: " unidade", label: "Juazeiro do Norte e Lavras da Mangabeira" },
   { value: "Online", label: "agendamento pelo site e atendimento pelo WhatsApp" },
 ];
 

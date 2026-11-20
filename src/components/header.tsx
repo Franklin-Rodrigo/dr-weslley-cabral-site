@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useMotionValueEvent, useScroll } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { BOOKING_HREF, NAV_LINKS } from "@/lib/content";
 import { ButtonLink, Container } from "./ui";
@@ -8,6 +9,10 @@ import { Logo } from "./logo";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 24));
+  const solid = scrolled || open;
 
   useEffect(() => {
     if (!open) return;
@@ -29,8 +34,16 @@ export function Header() {
   const right = NAV_LINKS.slice(3, 4);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
-      <Container className="grid h-20 grid-cols-[auto_1fr] items-center gap-6 lg:h-[98px] lg:grid-cols-[1fr_auto_1fr]">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
+        solid ? "border-border bg-background/80 backdrop-blur-md" : "border-transparent bg-transparent"
+      }`}
+    >
+      <Container
+        className={`grid h-20 grid-cols-[auto_1fr] items-center gap-6 transition-[height] duration-500 lg:grid-cols-[1fr_auto_1fr] ${
+          scrolled ? "lg:h-[76px]" : "lg:h-[98px]"
+        }`}
+      >
         <nav aria-label="Principal" className="hidden gap-8 text-[15px] font-medium lg:flex">
           {left.map((l) => (
             <a key={l.href} href={l.href} className="transition-colors hover:text-gold">

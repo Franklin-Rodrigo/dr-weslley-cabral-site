@@ -1,4 +1,3 @@
-import Image, { type StaticImageData } from "next/image";
 import { MapPin } from "lucide-react";
 import recepcao from "@/assets/ambiente/recepcao.webp";
 import consultorio from "@/assets/ambiente/consultorio.webp";
@@ -10,19 +9,19 @@ import salaDeAvaliacao from "@/assets/ambiente/sala-de-avaliacao.webp";
 import consultorio2 from "@/assets/ambiente/consultorio-2.webp";
 import { Container, Eyebrow, SectionTitle } from "./ui";
 import { Reveal } from "./reveal";
-
-type Photo = { src: StaticImageData; alt: string; label: string; className: string; sizes: string };
+import { Gallery, type GalleryItem } from "./gallery";
 
 const PORTRAIT = "aspect-[3/4] lg:col-span-4";
 const PORTRAIT_SIZES = "(min-width: 1024px) 33vw, 50vw";
 
-const PHOTOS: Photo[] = [
+const PHOTOS: GalleryItem[] = [
   {
     src: recepcao,
     alt: "Recepção com balcão escuro, monograma WC na parede e luminária de hexágonos no teto",
     label: "Recepção",
     className: "col-span-2 aspect-[4/3] lg:col-span-7 lg:aspect-auto lg:h-[520px]",
     sizes: "(min-width: 1024px) 58vw, 100vw",
+    parallax: true,
   },
   {
     src: consultorio,
@@ -30,6 +29,7 @@ const PHOTOS: Photo[] = [
     label: "Consultório 1",
     className: "col-span-2 aspect-[3/4] sm:aspect-[4/3] lg:col-span-5 lg:aspect-auto lg:h-[520px]",
     sizes: "(min-width: 1024px) 42vw, 100vw",
+    parallax: true,
   },
   {
     src: salaDeAvaliacao,
@@ -89,25 +89,7 @@ export function Ambiente() {
             Unidade de Juazeiro do Norte
           </p>
         </Reveal>
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-12 lg:gap-6">
-          {PHOTOS.map((p, i) => (
-            <Reveal key={p.label} delay={(i % 3) * 100} className={p.className}>
-              <figure className="group relative m-0 h-full overflow-hidden rounded-[4px] bg-surface">
-                <Image
-                  src={p.src}
-                  alt={p.alt}
-                  fill
-                  placeholder="blur"
-                  sizes={p.sizes}
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-                <figcaption className="absolute bottom-4 left-4 rounded-[2px] bg-background/85 px-3 py-1.5 text-sm font-medium backdrop-blur-sm">
-                  {p.label}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
+        <Gallery items={PHOTOS} className="grid grid-cols-2 gap-4 lg:grid-cols-12 lg:gap-6" />
       </Container>
     </section>
   );

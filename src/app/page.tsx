@@ -9,6 +9,8 @@ import { Units } from "@/components/units";
 import { Ambiente } from "@/components/ambiente";
 import { FinalCta } from "@/components/final-cta";
 import { Footer } from "@/components/footer";
+import { Marquee } from "@/components/marquee";
+import { WhatsAppFloat } from "@/components/whatsapp-float";
 
 export default function Home() {
   return (
@@ -18,6 +20,7 @@ export default function Home() {
         <Hero />
         <Stats />
         <Treatments />
+        <Marquee />
         <Results />
         <About />
         <PreRegister />
@@ -26,6 +29,7 @@ export default function Home() {
         <FinalCta />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </>
   );
 }

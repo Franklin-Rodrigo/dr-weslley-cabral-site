@@ -1,10 +1,11 @@
 import { Clock, MapPin, Star } from "lucide-react";
-import Image, { type StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 import { GOOGLE_REVIEW_URL, UNITS } from "@/lib/content";
 import fotoJuazeiro from "@/assets/unidades/juazeiro.webp";
 import fotoLavras from "@/assets/unidades/lavras.webp";
 import { ButtonLink, Container, Eyebrow, SectionTitle } from "./ui";
 import { Reveal } from "./reveal";
+import { RevealImage } from "./reveal-image";
 
 const PHOTOS: Record<string, { src: StaticImageData; alt: string }> = {
   juazeiro: {
@@ -17,14 +18,14 @@ const PHOTOS: Record<string, { src: StaticImageData; alt: string }> = {
   },
 };
 
-const greeting =encodeURIComponent("Olá, Dr. Weslley! Gostaria de agendar uma avaliação.");
+const greeting = encodeURIComponent("Olá, Dr. Weslley! Gostaria de agendar uma avaliação.");
 
 export function Units() {
   return (
     <section id="unidades" className="py-20 lg:py-28">
       <Container>
         <Reveal className="text-center">
-          <Eyebrow>Unidades</Eyebrow>
+          <Eyebrow className="justify-center">Unidades</Eyebrow>
           <SectionTitle>Atendimento em duas cidades</SectionTitle>
         </Reveal>
         <div className="mt-12 grid gap-8 md:grid-cols-2">
@@ -32,16 +33,12 @@ export function Units() {
             <Reveal key={u.id} delay={i * 120}>
               <article className="flex h-full flex-col overflow-hidden rounded-[4px] border border-border bg-surface">
                 {PHOTOS[u.id] && (
-                  <figure className="relative m-0 aspect-square w-full border-b border-border">
-                    <Image
-                      src={PHOTOS[u.id].src}
-                      alt={PHOTOS[u.id].alt}
-                      fill
-                      placeholder="blur"
-                      sizes="(min-width: 1328px) 640px, (min-width: 768px) 50vw, 100vw"
-                      className="object-cover"
-                    />
-                  </figure>
+                  <RevealImage
+                    src={PHOTOS[u.id].src}
+                    alt={PHOTOS[u.id].alt}
+                    sizes="(min-width: 1328px) 640px, (min-width: 768px) 50vw, 100vw"
+                    className="aspect-square w-full border-b border-border"
+                  />
                 )}
                 <div className="flex flex-1 flex-col p-6 sm:p-10">
                   <h3 className="mb-3 font-serif text-[2rem] leading-tight font-medium">{u.city}</h3>

@@ -31,9 +31,122 @@ html {
   scroll-padding-top: 6rem;
 }
 
+/* ---------- Animações ---------- */
+
+@keyframes rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1.14);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes halo {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* abertura: roda só com CSS, sem esperar o JavaScript */
+.hero-word {
+  animation: rise 0.95s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+.hero-fade {
+  animation: fade-up 0.9s ease-out both;
+}
+.hero-line {
+  transform-origin: left;
+  animation: draw 1.1s cubic-bezier(0.7, 0, 0.2, 1) both;
+}
+.hero-zoom {
+  animation: ken-burns 10s cubic-bezier(0.2, 0.6, 0.3, 1) both;
+}
+.scroll-cue {
+  animation: scroll-cue 2.2s ease-in-out infinite;
+}
+.halo {
+  animation: halo 2.4s ease-out infinite;
+}
+
+.marquee-track {
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .hero-word,
+  .hero-fade,
+  .hero-line,
+  .hero-zoom,
+  .scroll-cue,
+  .halo,
+  .marquee-track {
+    animation: none !important;
   }
 }
 

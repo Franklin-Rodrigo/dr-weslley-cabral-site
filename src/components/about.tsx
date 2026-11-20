@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { Check } from "lucide-react";
 import { ABOUT } from "@/lib/content";
 import retrato from "@/assets/dr-weslley.webp";
 import { Container, Eyebrow } from "./ui";
 import { Reveal } from "./reveal";
+import { RevealImage } from "./reveal-image";
 
 export function About() {
   return (
@@ -28,18 +28,22 @@ export function About() {
             ))}
           </ul>
         </Reveal>
-        <Reveal className="order-1 lg:order-2" delay={120}>
-          <figure className="relative m-0 h-[460px] overflow-hidden rounded-[4px] bg-surface lg:h-[620px]">
-            <Image
-              src={retrato}
-              alt="Retrato do Dr. Weslley Cabral, de suéter azul-marinho e braços cruzados"
-              fill
-              placeholder="blur"
-              sizes="(min-width: 1024px) 520px, 100vw"
-              className="object-cover"
-            />
-          </figure>
-        </Reveal>
+        <div className="relative order-1 lg:order-2">
+          {/* moldura dourada deslocada atrás do retrato */}
+          <span aria-hidden className="absolute inset-0 hidden translate-x-5 translate-y-5 rounded-[4px] border border-gold/40 lg:block" />
+          <RevealImage
+            src={retrato}
+            alt="Retrato do Dr. Weslley Cabral, de suéter azul-marinho e braços cruzados"
+            sizes="(min-width: 1024px) 520px, 100vw"
+            parallax
+            className="h-[460px] rounded-[4px] lg:h-[620px]"
+          >
+            <figcaption className="absolute bottom-5 left-5 flex items-center gap-2.5 rounded-[2px] bg-background/85 px-4 py-2.5 text-sm font-medium backdrop-blur-sm">
+              <i className="size-2.5 rounded-full bg-gold" />
+              Cirurgião-dentista
+            </figcaption>
+          </RevealImage>
+        </div>
       </Container>
     </section>
   );

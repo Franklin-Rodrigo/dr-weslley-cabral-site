@@ -8,8 +8,12 @@ const variants: Record<Variant, string> = {
   inverse: "bg-gold-foreground text-gold border-gold-foreground hover:brightness-125",
 };
 
+/** Brilho que atravessa o botão ao passar o mouse. */
+const shine =
+  "relative isolate overflow-hidden before:pointer-events-none before:absolute before:inset-y-0 before:-left-1/2 before:-z-10 before:w-1/2 before:-skew-x-12 before:bg-linear-to-r before:from-transparent before:via-white/40 before:to-transparent before:transition-transform before:duration-700 before:ease-out hover:before:translate-x-[400%] motion-reduce:before:hidden";
+
 export function buttonClass(variant: Variant = "gold", extra = "") {
-  return `inline-flex items-center justify-center gap-2 rounded-[2px] border px-7 py-[18px] text-center text-[15px] leading-none font-semibold transition duration-200 motion-safe:hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${variants[variant]} ${extra}`;
+  return `inline-flex items-center justify-center gap-2 rounded-[2px] border px-7 py-[18px] text-center text-[15px] leading-none font-semibold transition duration-200 motion-safe:hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${shine} ${variants[variant]} ${extra}`;
 }
 
 export function ButtonLink({
@@ -29,7 +33,10 @@ export function ButtonLink({
 
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <p className={`mb-4 text-xs font-semibold tracking-[0.15em] text-gold uppercase ${className}`}>{children}</p>
+    <p className={`mb-4 flex items-center gap-3 text-xs font-semibold tracking-[0.15em] text-gold uppercase ${className}`}>
+      <span aria-hidden className="h-px w-8 shrink-0 bg-gold" />
+      {children}
+    </p>
   );
 }
 
@@ -43,40 +50,4 @@ export function SectionTitle({ children, className = "" }: { children: ReactNode
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <div className={`mx-auto w-full max-w-[1328px] px-6 ${className}`}>{children}</div>;
-}
-
-/** Espaço reservado para foto, até o Dr. Weslley mandar as imagens reais. */
-export function PhotoPlaceholder({
-  label,
-  badge,
-  silhouette = true,
-  className = "",
-}: {
-  label: string;
-  badge?: string;
-  silhouette?: boolean;
-  className?: string;
-}) {
-  return (
-    <figure
-      aria-label={label}
-      className={`relative m-0 flex items-end justify-center overflow-hidden bg-linear-to-br from-gold-deep to-background ${className}`}
-    >
-      {silhouette && (
-        <>
-          <span className="absolute top-[36%] left-1/2 aspect-square w-[22%] max-w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/30" />
-          <span className="absolute bottom-0 left-1/2 h-[36%] w-[62%] -translate-x-1/2 rounded-t-[50%] bg-gold/30" />
-        </>
-      )}
-      {badge && (
-        <span className="absolute top-6 left-6 z-10 flex items-center gap-2.5 rounded-[2px] bg-background px-4 py-2.5 text-sm font-medium">
-          <i className="size-2.5 rounded-full bg-gold" />
-          {badge}
-        </span>
-      )}
-      <figcaption className="relative z-10 pb-6 text-center text-xs font-semibold tracking-[0.12em] text-gold uppercase">
-        {label}
-      </figcaption>
-    </figure>
-  );
 }
