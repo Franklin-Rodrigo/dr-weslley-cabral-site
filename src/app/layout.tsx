@@ -3,6 +3,13 @@ import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { siteUrl } from "@/lib/site-url";
 import { MotionProvider } from "@/components/motion-provider";
+import { Intro } from "@/components/intro";
+
+/**
+ * Decide antes da primeira pintura se a abertura do WC toca (ver components/intro.tsx).
+ * Se algo falhar no JavaScript, o atributo é removido em 6 s para a página nunca ficar presa.
+ */
+const introScript = `try{var r=document.documentElement;if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&!location.hash&&!sessionStorage.getItem("intro-visto")){r.dataset.intro="play";setTimeout(function(){delete r.dataset.intro},6000)}}catch(e){}`;
 
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
 const playfair = Playfair_Display({
@@ -36,7 +43,10 @@ export const viewport: Viewport = { themeColor: "#0c0c0c" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className={`${manrope.variable} ${playfair.variable} h-full antialiased`}>
+    <html lang="pt-BR" suppressHydrationWarning className={`${manrope.variable} ${playfair.variable} h-full antialiased`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: introScript }} />
+      </head>
       <body className="min-h-full bg-background font-sans text-foreground">
         <a
           href="#conteudo"
@@ -44,7 +54,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Pular para o conteúdo
         </a>
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <Intro />
+          {children}
+        </MotionProvider>
       </body>
     </html>
   );

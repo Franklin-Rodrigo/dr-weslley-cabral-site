@@ -127,6 +127,27 @@ html {
   }
 }
 
+/* ---------- Abertura do WC (components/intro.tsx) ---------- */
+
+[data-intro-overlay] {
+  display: none;
+}
+html[data-intro] [data-intro-overlay] {
+  display: flex;
+}
+html[data-intro="play"] {
+  overflow: hidden;
+}
+html[data-intro="play"] [data-intro-overlay] {
+  pointer-events: auto;
+}
+html[data-intro] header [data-logo-mark] {
+  opacity: 0;
+}
+html[data-intro="play"] :is(.hero-word, .hero-fade, .hero-line, .hero-zoom) {
+  animation-play-state: paused;
+}
+
 ::selection {
   background: var(--gold);
   color: var(--gold-foreground);
