@@ -101,7 +101,7 @@ export function PreRegister() {
   const missing = [errors.name && "nome", errors.phone && "WhatsApp"].filter(Boolean);
 
   return (
-    <section id="pre-cadastro" className="bg-surface-alt py-20 lg:py-28">
+    <section id="pre-cadastro" className="py-20 lg:py-28">
       <Container className="grid items-start gap-12 lg:grid-cols-[1fr_minmax(0,680px)] lg:gap-16">
         <Reveal>
           <Eyebrow>Pré-cadastro</Eyebrow>

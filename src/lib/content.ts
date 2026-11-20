@@ -22,6 +22,8 @@ export type Unit = {
   phoneLabel: string;
   address: string;
   reference?: string;
+  /** busca usada no mapa e no link do Google Maps (o endereço completo de Lavras cai no Hotel Bela Vista) */
+  mapQuery: string;
   hours: { days: string; time: string }[];
 };
 
@@ -34,6 +36,7 @@ export const UNITS: Unit[] = [
     phoneLabel: WHATSAPP_LABEL,
     address: "Av. Leão Sampaio, 3200 - Lagoa Seca, Juazeiro do Norte - CE",
     reference: "No GMall",
+    mapQuery: "Dr. Weslley Cabral, Av. Leão Sampaio, 3200, Juazeiro do Norte - CE",
     hours: [{ days: "Segunda a sexta", time: "9h às 12h e 14h às 18h" }],
   },
   {
@@ -44,6 +47,7 @@ export const UNITS: Unit[] = [
     phoneLabel: WHATSAPP_LABEL,
     address: "Rua da Ferroviária, 147B - Boa Vista, Lavras da Mangabeira - CE",
     reference: "Ao lado da Clínica dos Caichos",
+    mapQuery: "Rua Ferroviária, 147, Lavras da Mangabeira - CE",
     hours: [{ days: "Quinta a sábado", time: "8h às 12h e 14h às 18h" }],
   },
 ];
@@ -53,8 +57,8 @@ export const NAV_LINKS = [
   { href: "#tratamentos", label: "Tratamentos" },
   { href: "#resultados", label: "Resultados" },
   { href: "#sobre", label: "Sobre" },
-  { href: "#unidades", label: "Unidades" },
   { href: "#ambiente", label: "Ambiente" },
+  { href: "#unidades", label: "Unidades" },
 ];
 
 export const HERO = {

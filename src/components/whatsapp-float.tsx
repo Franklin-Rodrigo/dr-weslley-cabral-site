@@ -30,7 +30,7 @@ export function WhatsAppFloat() {
           <span className="pointer-events-none hidden translate-x-2 rounded-[2px] border border-gold/30 bg-background/90 px-4 py-2.5 text-sm font-semibold whitespace-nowrap opacity-0 shadow-lg backdrop-blur-md transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 lg:block">
             Fale no WhatsApp
           </span>
-          <span className="relative grid size-14 place-items-center rounded-full bg-gold text-gold-foreground shadow-[0_10px_30px_-8px_rgba(201,164,92,0.6)] transition-transform duration-300 group-hover:scale-105">
+          <span className="relative grid size-14 place-items-center rounded-full bg-gold text-gold-foreground shadow-[0_10px_30px_-8px_rgba(201,164,92,0.6)] ring-2 ring-gold-foreground/70 transition-transform duration-300 group-hover:scale-105">
             <span aria-hidden className="halo absolute inset-0 rounded-full bg-gold" />
             <MessageCircle size={26} strokeWidth={2.2} className="relative" aria-hidden />
           </span>

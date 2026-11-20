@@ -23,9 +23,9 @@ export default function Home() {
         <Marquee />
         <Results />
         <About />
+        <Ambiente />
         <PreRegister />
         <Units />
-        <Ambiente />
         <FinalCta />
       </main>
       <Footer />

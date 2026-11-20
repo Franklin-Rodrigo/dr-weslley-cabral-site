@@ -12,32 +12,47 @@ import { ButtonLink, Container, Eyebrow, SectionTitle } from "./ui";
 import { Reveal } from "./reveal";
 import { BeforeAfter } from "./before-after";
 import { RevealImage } from "./reveal-image";
-import { Gallery, type GalleryItem } from "./gallery";
+import { CaseCarousel, type CaseItem } from "./case-carousel";
 
-const CASE_BOX = "aspect-square";
-const CASE_SIZES = "(min-width: 1024px) 33vw, 50vw";
-
-const CASES: GalleryItem[] = [
+const CASES: CaseItem[] = [
   {
     src: casoPerfil,
     alt: "Antes e depois do sorriso de um paciente, lado a lado",
     label: "Estética do sorriso",
+    text: "Sorriso mais claro e harmônico, visto de frente.",
     imgClassName: "object-top",
   },
-  { src: casoSorriso, alt: "Sorriso antes e depois do tratamento, um acima do outro", label: "Estética do sorriso" },
-  { src: casoFacetas, alt: "Dentes desgastados antes e sorriso alinhado depois", label: "Estética do sorriso" },
+  {
+    src: casoSorriso,
+    alt: "Sorriso antes e depois do tratamento, um acima do outro",
+    label: "Estética do sorriso",
+    text: "Dentes mais uniformes, com cor e formato naturais.",
+  },
+  {
+    src: casoFacetas,
+    alt: "Dentes desgastados antes e sorriso alinhado depois",
+    label: "Estética do sorriso",
+    text: "Dentes desgastados recuperam formato e proporção.",
+  },
   {
     src: casoEtapas,
     alt: "Três etapas do tratamento de um paciente que tinha dentes faltando",
     label: "Reabilitação oral",
+    text: "Dentes que faltavam, devolvidos etapa por etapa.",
   },
   {
     src: casoResina,
     alt: "Restaurações metálicas antigas substituídas por resina da cor do dente",
     label: "Resina composta",
+    text: "Restaurações metálicas antigas trocadas por resina da cor do dente.",
   },
-  { src: casoLateral, alt: "Vista lateral dos dentes antes e depois do tratamento", label: "Estética do sorriso" },
-].map((c) => ({ ...c, className: CASE_BOX, sizes: CASE_SIZES }));
+  {
+    src: casoLateral,
+    alt: "Vista lateral dos dentes antes e depois do tratamento",
+    label: "Estética do sorriso",
+    text: "O mesmo cuidado visto de lado: antes e depois.",
+  },
+];
 
 export function Results() {
   return (
@@ -80,7 +95,9 @@ export function Results() {
           </RevealImage>
         </div>
 
-        <Gallery items={CASES} className="mt-4 grid grid-cols-2 gap-4 lg:mt-6 lg:grid-cols-3 lg:gap-6" />
+        <div className="mt-14 lg:mt-16">
+          <CaseCarousel items={CASES} />
+        </div>
 
         <p className="mt-8 text-center text-sm text-muted">
           Imagens de pacientes reais, publicadas com autorização. Cada caso tem um planejamento próprio.

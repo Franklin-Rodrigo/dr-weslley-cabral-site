@@ -1,11 +1,13 @@
 import type { ComponentProps, ReactNode } from "react";
 
-type Variant = "gold" | "ghost" | "inverse";
+type Variant = "gold" | "ghost" | "inverse" | "outlineDark";
 
 const variants: Record<Variant, string> = {
   gold: "bg-gold text-gold-foreground border-gold hover:brightness-110",
   ghost: "bg-transparent text-foreground border-foreground hover:bg-foreground hover:text-gold-foreground",
   inverse: "bg-gold-foreground text-gold border-gold-foreground hover:brightness-125",
+  /** contorno escuro, para usar sobre fundo dourado */
+  outlineDark: "bg-transparent text-gold-foreground border-gold-foreground hover:bg-gold-foreground hover:text-gold",
 };
 
 /** Brilho que atravessa o botão ao passar o mouse. */

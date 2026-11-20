@@ -30,8 +30,9 @@ export function Header() {
     };
   }, [open]);
 
-  const left = NAV_LINKS.slice(0, 3);
-  const right = NAV_LINKS.slice(3, 4);
+  // no computador: 3 links de cada lado do logo ("Início" fica no próprio logo)
+  const left = NAV_LINKS.slice(1, 4);
+  const right = NAV_LINKS.slice(4, 6);
 
   return (
     <header
@@ -44,7 +45,7 @@ export function Header() {
           scrolled ? "lg:h-[76px]" : "lg:h-[98px]"
         }`}
       >
-        <nav aria-label="Principal" className="hidden gap-8 text-[15px] font-medium lg:flex">
+        <nav aria-label="Principal" className="hidden gap-6 text-[15px] font-medium lg:flex xl:gap-8">
           {left.map((l) => (
             <a key={l.href} href={l.href} className="transition-colors hover:text-gold">
               {l.label}
@@ -54,7 +55,7 @@ export function Header() {
 
         <Logo />
 
-        <div className="flex items-center justify-end gap-8">
+        <div className="flex items-center justify-end gap-6 xl:gap-8">
           {right.map((l) => (
             <a key={l.href} href={l.href} className="hidden text-[15px] font-medium transition-colors hover:text-gold lg:inline">
               {l.label}
@@ -62,7 +63,8 @@ export function Header() {
           ))}
           <span className="hidden md:block">
             <ButtonLink href={BOOKING_HREF} className="px-6! py-4!">
-              Agendar consulta
+              <span className="xl:hidden">Agendar</span>
+              <span className="hidden xl:inline">Agendar consulta</span>
             </ButtonLink>
           </span>
           <button

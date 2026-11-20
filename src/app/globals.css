@@ -77,25 +77,6 @@ html {
   }
 }
 
-@keyframes scroll-cue {
-  0% {
-    transform: scaleY(0);
-    transform-origin: top;
-  }
-  45% {
-    transform: scaleY(1);
-    transform-origin: top;
-  }
-  55% {
-    transform: scaleY(1);
-    transform-origin: bottom;
-  }
-  100% {
-    transform: scaleY(0);
-    transform-origin: bottom;
-  }
-}
-
 @keyframes halo {
   0% {
     transform: scale(1);
@@ -121,9 +102,6 @@ html {
 .hero-zoom {
   animation: ken-burns 10s cubic-bezier(0.2, 0.6, 0.3, 1) both;
 }
-.scroll-cue {
-  animation: scroll-cue 2.2s ease-in-out infinite;
-}
 .halo {
   animation: halo 2.4s ease-out infinite;
 }
@@ -143,7 +121,6 @@ html {
   .hero-fade,
   .hero-line,
   .hero-zoom,
-  .scroll-cue,
   .halo,
   .marquee-track {
     animation: none !important;

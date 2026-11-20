@@ -29,10 +29,10 @@ export function Hero() {
         />
         <div className="absolute inset-0 bg-linear-to-t from-background from-38% via-background/70 via-60% to-background/0 lg:bg-linear-to-r lg:from-background/80 lg:from-0% lg:via-background/55 lg:via-45% lg:to-transparent lg:to-80%" />
         <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-background/70 to-transparent lg:h-48 lg:from-background/80" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-background to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-background to-transparent" />
       </div>
 
-      <Container className="pb-16 lg:pb-24">
+      <Container className="pb-28 lg:pb-32">
         <div className="max-w-[680px] [text-shadow:0_2px_18px_rgb(0_0_0/0.55)]">
           <div className="hero-fade" style={delay(100)}>
             <Eyebrow>{HERO.eyebrow}</Eyebrow>
@@ -66,18 +66,8 @@ export function Hero() {
         </div>
       </Container>
 
-      {/* rodapé da abertura: convite para rolar e selo do instituto */}
-      <Container className="pointer-events-none absolute inset-x-0 bottom-8 hidden items-end justify-between lg:flex">
-        <a
-          href="#tratamentos"
-          className="hero-fade pointer-events-auto flex items-center gap-4 text-xs font-semibold tracking-[0.18em] text-muted uppercase transition-colors hover:text-gold"
-          style={delay(afterTitle + 600)}
-        >
-          <span className="relative h-12 w-px overflow-hidden bg-border">
-            <span className="scroll-cue absolute inset-0 bg-gold" />
-          </span>
-          Role para conhecer
-        </a>
+      {/* selo do instituto; o cartão de números logo abaixo já convida a rolar */}
+      <Container className="pointer-events-none absolute inset-x-0 bottom-28 hidden justify-end lg:flex">
         <div
           className="hero-fade flex items-center gap-3 rounded-[2px] border border-gold/30 bg-background/70 px-4 py-3 backdrop-blur-md"
           style={delay(afterTitle + 450)}

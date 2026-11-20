@@ -1,4 +1,4 @@
-import { Clock, MapPin, Star } from "lucide-react";
+import { Clock, MapPin, MessageCircle, Star } from "lucide-react";
 import type { StaticImageData } from "next/image";
 import { GOOGLE_REVIEW_URL, UNITS } from "@/lib/content";
 import fotoJuazeiro from "@/assets/unidades/juazeiro.webp";
@@ -19,72 +19,93 @@ const PHOTOS: Record<string, { src: StaticImageData; alt: string }> = {
 };
 
 const greeting = encodeURIComponent("Olá, Dr. Weslley! Gostaria de agendar uma avaliação.");
+const mapsLink = (q: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const mapsEmbed = (q: string) => `https://www.google.com/maps?q=${encodeURIComponent(q)}&hl=pt-BR&z=16&output=embed`;
 
 export function Units() {
   return (
-    <section id="unidades" className="py-20 lg:py-28">
+    <section id="unidades" className="bg-surface-alt py-20 lg:py-28">
       <Container>
-        <Reveal className="text-center">
-          <Eyebrow className="justify-center">Unidades</Eyebrow>
-          <SectionTitle>Atendimento em duas cidades</SectionTitle>
-        </Reveal>
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
-          {UNITS.map((u, i) => (
-            <Reveal key={u.id} delay={i * 120}>
-              <article className="flex h-full flex-col overflow-hidden rounded-[4px] border border-border bg-surface">
-                {PHOTOS[u.id] && (
-                  <RevealImage
-                    src={PHOTOS[u.id].src}
-                    alt={PHOTOS[u.id].alt}
-                    sizes="(min-width: 1328px) 640px, (min-width: 768px) 50vw, 100vw"
-                    className="aspect-square w-full border-b border-border"
-                  />
-                )}
-                <div className="flex flex-1 flex-col p-6 sm:p-10">
-                  <h3 className="mb-3 font-serif text-[2rem] leading-tight font-medium">{u.city}</h3>
-                  <p className="flex items-start gap-2 text-muted">
-                    <MapPin size={18} className="mt-1 shrink-0 text-gold" aria-hidden />
-                    {u.address.includes("a confirmar") ? (
-                      u.address
-                    ) : (
-                      <a
-                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(u.address)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline decoration-border underline-offset-4 transition-colors hover:text-gold hover:decoration-gold"
-                      >
-                        {u.address}
-                      </a>
-                    )}
-                  </p>
-                  {u.reference && <p className="mt-1 pl-[26px] text-sm text-muted">{u.reference}</p>}
-                  {u.hours.map((h) => (
-                    <p key={h.days} className="mt-3 flex items-start gap-2 text-muted">
-                      <Clock size={18} className="mt-1 shrink-0 text-gold" aria-hidden />
-                      <span>
-                        <strong className="font-semibold text-foreground">{h.days}</strong> · {h.time}
-                      </span>
-                    </p>
-                  ))}
-                  <div className="mt-auto pt-6">
-                    <p className="mb-6 text-lg font-semibold">WhatsApp {u.phoneLabel}</p>
-                    <ButtonLink href={`https://wa.me/${u.whatsapp}?text=${greeting}`}>Chamar no WhatsApp</ButtonLink>
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-        <p className="mt-10 text-center">
+        <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <Eyebrow>Unidades</Eyebrow>
+            <SectionTitle>Atendimento em duas cidades</SectionTitle>
+          </div>
           <a
             href={GOOGLE_REVIEW_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-medium text-gold underline decoration-gold/40 underline-offset-4 transition-colors hover:decoration-gold"
           >
-            <Star size={16} fill="currentColor" aria-hidden /> Já foi atendido? Avalie o Dr. Weslley no Google
+            <Star size={16} fill="currentColor" aria-hidden /> Já foi atendido? Avalie no Google
           </a>
-        </p>
+        </Reveal>
+
+        <div className="grid gap-6 lg:gap-8">
+          {UNITS.map((u, i) => (
+            <Reveal key={u.id} delay={i * 120}>
+              <article className="grid overflow-hidden rounded-[4px] border border-border bg-surface md:grid-cols-2 lg:grid-cols-[360px_minmax(0,1fr)_minmax(0,1fr)]">
+                {PHOTOS[u.id] && (
+                  <RevealImage
+                    src={PHOTOS[u.id].src}
+                    alt={PHOTOS[u.id].alt}
+                    sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
+                    className="aspect-square md:aspect-auto md:h-full md:min-h-[360px]"
+                  />
+                )}
+
+                <div className="flex flex-col p-6 sm:p-8 lg:p-10">
+                  <p className="mb-2 text-xs font-semibold tracking-[0.15em] text-gold uppercase">
+                    Unidade {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mb-5 font-serif text-[2rem] leading-tight font-medium">{u.city}</h3>
+                  <p className="flex items-start gap-2.5 text-muted">
+                    <MapPin size={18} className="mt-1 shrink-0 text-gold" aria-hidden />
+                    <span>
+                      <a
+                        href={mapsLink(u.mapQuery)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline decoration-border underline-offset-4 transition-colors hover:text-gold hover:decoration-gold"
+                      >
+                        {u.address}
+                      </a>
+                      {u.reference && <span className="mt-1 block text-sm">{u.reference}</span>}
+                    </span>
+                  </p>
+                  {u.hours.map((h) => (
+                    <p key={h.days} className="mt-3 flex items-start gap-2.5 text-muted">
+                      <Clock size={18} className="mt-1 shrink-0 text-gold" aria-hidden />
+                      <span>
+                        <strong className="font-semibold text-foreground">{h.days}</strong> · {h.time}
+                      </span>
+                    </p>
+                  ))}
+                  <p className="mt-3 flex items-start gap-2.5 text-muted">
+                    <MessageCircle size={18} className="mt-1 shrink-0 text-gold" aria-hidden />
+                    <span>
+                      <strong className="font-semibold text-foreground">WhatsApp</strong> · {u.phoneLabel}
+                    </span>
+                  </p>
+                  <div className="mt-auto pt-8">
+                    <ButtonLink href={`https://wa.me/${u.whatsapp}?text=${greeting}`}>Chamar no WhatsApp</ButtonLink>
+                  </div>
+                </div>
+
+                {/* mapa: escurecido por filtro para combinar com o site */}
+                <div className="relative min-h-[260px] border-t border-border bg-surface-alt md:col-span-2 lg:col-span-1 lg:border-t-0 lg:border-l">
+                  <iframe
+                    src={mapsEmbed(u.mapQuery)}
+                    title={`Mapa da unidade de ${u.name}`}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="absolute inset-0 h-full w-full border-0 [filter:grayscale(1)_invert(0.92)_contrast(0.9)_brightness(0.95)]"
+                  />
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </Container>
     </section>
   );
